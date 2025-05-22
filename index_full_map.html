@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GALA RESORT Guest Nationality Map</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+    #map-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    #logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 200px;
+      z-index: 10;
+    }
+    .country {
+      fill: #888;
+      stroke: #fff;
+      stroke-width: 0.5;
+      cursor: pointer;
+      transition: fill 0.2s;
+    }
+    .country:hover {
+      fill: #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <div id="map-container">
+    <img id="logo" src="GARA2025アウトライン_G.png" alt="GALA RESORT Logo" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1001">
+      <g id="countries">
+        <path id="US" class="country" d="M 150 300 L 250 300 L 250 400 L 150 400 Z" />
+        <path id="JP" class="country" d="M 1700 300 L 1720 320 L 1700 340 Z" />
+        <path id="KR" class="country" d="M 1650 320 L 1670 340 L 1650 360 Z" />
+        <path id="CN" class="country" d="M 1550 300 L 1600 300 L 1600 350 L 1550 350 Z" />
+        <path id="FR" class="country" d="M 800 350 L 850 350 L 850 400 L 800 400 Z" />
+        <path id="DE" class="country" d="M 860 340 L 910 340 L 910 390 L 860 390 Z" />
+        <path id="IN" class="country" d="M 1350 500 L 1400 500 L 1400 550 L 1350 550 Z" />
+        <path id="BR" class="country" d="M 400 700 L 470 700 L 470 770 L 400 770 Z" />
+        <path id="RU" class="country" d="M 1000 100 L 1300 100 L 1300 200 L 1000 200 Z" />
+        <path id="AU" class="country" d="M 1700 800 L 1800 800 L 1800 900 L 1700 900 Z" />
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    document.querySelectorAll('.country').forEach(el => {
+      el.addEventListener('click', async () => {
+        const country = el.id;
+        el.style.fill = '#00FF7F';
+
+        const now = new Date().toISOString();
+
+        await fetch("https://script.google.com/macros/s/AKfycbw_PX0CG5qlo__I6Ni-Er96c3uc4UoIqQn-lpjRJONCFmA72wOhzvWLQ2M3HQ8Z1EVM/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            timestamp: now,
+            country: country,
+            count: 1
+          })
+        });
+
+        setTimeout(() => {
+          el.style.fill = '';
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>
