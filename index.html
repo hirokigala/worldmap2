@@ -1,80 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GALA RESORT Guest Nationality Map</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #000;
-    }
-    #map-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-    #logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 200px;
-      z-index: 10;
-    }
-    .country {
-      fill: #888;
-      stroke: #fff;
-      stroke-width: 0.5;
-      cursor: pointer;
-      transition: fill 0.2s;
-    }
-    .country:hover {
-      fill: #FFD700;
-    }
-  </style>
-</head>
-<body>
-  <div id="map-container">
-    <img id="logo" src="GARA2025アウトライン_G.png" alt="GALA RESORT Logo" />
-    <svg id="world-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1001">
-      <!-- 世界地図の国パスをここに挿入（簡略版例） -->
-      <path id="JP" class="country" d="M 1700 300 L 1720 320 L 1700 340 Z" /> <!-- 日本 -->
-      <path id="US" class="country" d="M 300 400 L 500 400 L 500 500 L 300 500 Z" /> <!-- 米国 -->
-      <path id="KR" class="country" d="M 1600 320 L 1620 340 L 1600 360 Z" /> <!-- 韓国 -->
-    </svg>
-  </div>
-
-  <script>
-    document.querySelectorAll('.country').forEach(el => {
-      el.addEventListener('click', async () => {
-        const country = el.id;
-        el.style.fill = '#00FF7F';
-
-        const now = new Date().toISOString();
-
-        await fetch("https://script.google.com/macros/s/AKfycbw_PX0CG5qlo__I6Ni-Er96c3uc4UoIqQn-lpjRJONCFmA72wOhzvWLQ2M3HQ8Z1EVM/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            timestamp: now,
-            country: country,
-            count: 1
-          })
-        });
-
-        setTimeout(() => {
-          el.style.fill = '';
-        }, 500);
-      });
-    });
-  </script>
-</body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>hi-hoへようこそ</TITLE>
+</HEAD>
+<BODY>
+<H1>hi-hoへようこそ</H1>
+<IMG SRC="hiho.gif"><P>
+<TABLE BORDER=0>
+<TR><TD>
+こんにちは。
+hi-hoのページへようこそ。<BR>
+これを参考に、ホームページ作成に挑戦して<BR>
+くださいね。<BR>
+</TD></TR></TABLE>
+</BODY>
+</HTML>
